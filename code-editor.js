@@ -75,11 +75,9 @@ class CodeEditor extends HTMLElement {
             document.execCommand("insertHTML", false, sanitizedText);
         });
 		
-		window.onload = async () => {
-			this.codeArea.addEventListener("input", (event) => {
-				this.updateLineNumbers();
-			});
-		}
+		this.codeArea.addEventListener("input", (event) => {
+			this.updateLineNumbers();
+		});
 
         this.updateLineNumbers();
     }
