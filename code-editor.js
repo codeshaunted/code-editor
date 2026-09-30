@@ -70,7 +70,7 @@ class CodeEditor extends HTMLElement {
 
         this.codeArea.addEventListener("paste", (event) => {
 			// we need to sanitize this since we use insertHTML because insertText is broken on chrome
-			var sanitizedText = event.clipboardData.getData("text/plain").replace(/&amp;/g, "&amp;amp;").replace(/&lt;/g, "&amp;lt;").replace(/&gt;/g, "&amp;gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+			let sanitizedText = event.clipboardData.getData("text/plain").replace(/&amp;/g, "&amp;amp;").replace(/&lt;/g, "&amp;lt;").replace(/&gt;/g, "&amp;gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
             event.preventDefault();
             document.execCommand("insertHTML", false, sanitizedText);
         });
@@ -83,8 +83,8 @@ class CodeEditor extends HTMLElement {
     }
 
     updateLineNumbers() {
-        var text = this.codeArea.innerText;
-        var lines = text.split("\n").length;
+        let text = this.codeArea.innerText;
+        let lines = text.split("\n").length;
         if (lines < 1) {
             lines = 1;
         }
